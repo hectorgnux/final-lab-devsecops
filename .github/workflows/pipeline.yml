@@ -34,4 +34,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker
+        run: |
+          docker build --tag hectorgnux/final-lab-devsecops:latest .
           
