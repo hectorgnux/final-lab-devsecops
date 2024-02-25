@@ -29,13 +29,13 @@ jobs:
 
 # Docker
 
-      - name: Docker Login
+      - name: Punto 4 - Construcción de la Imagen Docker - Docker Login
         uses: docker/login-action@v3.0.0
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker
+      - name: Punto 4 - Construcción de la Imagen Docker - Build Docker
         run: |
           docker build --tag hectorgnux/final-lab-devsecops:latest .
 
