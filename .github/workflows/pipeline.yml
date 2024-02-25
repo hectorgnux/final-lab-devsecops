@@ -44,7 +44,7 @@ jobs:
         with:
           image-ref: 'hectorgnux/final-lab-devsecops:latest'
           format: 'table'
-          #exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
+          exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
       
       - name: Push Docker
         run: | 
