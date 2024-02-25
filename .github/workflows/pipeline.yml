@@ -58,7 +58,7 @@ jobs:
 
     - name: Punto 6 - Pull de la Imagen Docker
       run: |
-        docker pull hectorgnux/final-lab-devsecops:latest
+        docker pull hectorgnux/final-lab-devsecops
 
     - name: Punto 6 - Despliegue Aplicaion
       run: |
