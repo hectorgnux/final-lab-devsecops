@@ -62,7 +62,7 @@ jobs:
 
     - name: Punto 6 - Despliegue Aplicaion
       run: |
-        docker run -p 8085:8085 --name final-lab-devsecops -d hectorgnux/final-lab-devsecops:latest
+        docker run -p 8081:80 --name final-lab-devsecops -d hectorgnux/final-lab-devsecops:latest
 
     - name: Sleep
       run: | 
@@ -71,5 +71,5 @@ jobs:
     - name: Punto 7 - OWASP ZAP Scan
       uses: zaproxy/action-baseline@v0.11.0
       with:
-        target: 'http://localhost:8085/'
+        target: 'http://localhost:8081/'
           
