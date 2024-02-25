@@ -15,8 +15,6 @@ jobs:
 
       
       - name:  Compilando java
-        run: |
-          chmod +x gladlew
-          ./gradlew build
+        run: chmod +x ./gradlew build
 
           
