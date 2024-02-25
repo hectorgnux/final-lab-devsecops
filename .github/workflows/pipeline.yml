@@ -38,4 +38,15 @@ jobs:
       - name: Build Docker
         run: |
           docker build --tag hectorgnux/final-lab-devsecops:latest .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'clagosu/pet-clinic:latest'
+          format: 'table'
+          #exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
+      
+      - name: Push Docker
+        run: | 
+          docker push clagosu/pet-clinic
           
