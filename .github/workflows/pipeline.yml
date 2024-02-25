@@ -13,11 +13,7 @@ jobs:
       - name:  Descarga repositorio
         uses:  actions/checkout@v3
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-      - name:  Compilando java
-        run:  |
-          chmod +x gradlew
-          ./gradlew build
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
 
           
