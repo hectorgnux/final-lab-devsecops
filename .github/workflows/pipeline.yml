@@ -85,5 +85,6 @@ jobs:
     - name: Punto 7 - OWASP ZAP Scan
       uses: zaproxy/action-baseline@v0.11.0
       with:
-        target: 'http://192.168.100.42:8081/'
+        #target: 'http://192.168.100.42:8081/'
+        target: 'http://192.168.100.42:8081/ -d'
           
