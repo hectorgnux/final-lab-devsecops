@@ -9,8 +9,13 @@ jobs:
     runs-on:  ubuntu-latest
 
     steps:
-    
-      - uses:  actions/checkout@v3
+
       - name:  Descarga repositorio
+      - uses:  actions/checkout@v3
+
+      
+      - name:  Compilando java
         run:  |
-          echo "Hola Mundo"
+          chmod +x gladlew
+          ./gradlew build
+          
