@@ -49,4 +49,27 @@ jobs:
       - name: Push Docker
         run: | 
           docker push hectorgnux/final-lab-devsecops
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    
+    steps:
+
+    - name: Punto 6 - Pull de la Imagen Docker
+      run: |
+        docker pull hectorgnux/final-lab-devsecops:latest
+
+    - name: Punto 6 - Despliegue Aplicaion
+      run: |
+        docker run -p 8085:8085 --name final-lab-devsecops -d hectorgnux/final-lab-devsecops:latest
+
+    - name: Sleep
+      run: | 
+        sleep 30
+
+    - name: Punto 7 - OWASP ZAP Scan
+      uses: zaproxy/action-baseline@v0.11.0
+      with:
+        target: 'http://localhost:8085/'
           
