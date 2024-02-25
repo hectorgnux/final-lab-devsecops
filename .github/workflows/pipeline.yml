@@ -19,6 +19,10 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
 
+# Setup sonar-scanner
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v7
+
       - name:  Run a multiline script
         run:  |
           echo "Hola Mundo"
