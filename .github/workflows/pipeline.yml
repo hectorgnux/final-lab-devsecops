@@ -18,4 +18,8 @@ jobs:
         run:  |
           chmod +x gladlew
           ./gradlew build
+
+      - name:  Run a multiline script
+        run:  |
+          echo "Hola Mundo"
           
