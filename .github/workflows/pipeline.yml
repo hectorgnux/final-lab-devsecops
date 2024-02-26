@@ -10,57 +10,47 @@ jobs:
 
     steps:
 
-      - name:  Descarga repositorio
+      - name:  Punto 1 - Descarga repositorio
         uses:  actions/checkout@v3
 
-# Setup java 17
-#      - uses: actions/setup-java@v3
-#        with:
-#          distribution: 'temurin' # See 'Supported distributions' for available options
-#          java-version: '17'
+      - name: Punto 2 - SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-# Setup sonar-scanner
-#      - name: SonarCloud Scan
-#        uses: sonarsource/sonarcloud-github-action@master
-#        env:
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-# Dependency Check
-#      - name: Dependency Check
-#        uses: dependency-check/Dependency-Check_Action@1.1.0
-#        with:
-#          project: 'final-lab-devsecops'
-#          path: '.'
-#          format: 'HTML' 
-#      
-#      - name: Upload Test results
-#        uses: actions/upload-artifact@master
-#        with:
-#           name: Depcheck report
-#           path: ${{github.workspace}}/reports
-
-# Docker
-
-#      - name: Punto 4 - Construcción de la Imagen Docker - Docker Login
-#        uses: docker/login-action@v3.0.0
-#        with:
-#          username: ${{ secrets.DOCKER_USER }}
-#          password: ${{ secrets.DOCKER_PASSWORD }}
-
-#      - name: Punto 4 - Construcción de la Imagen Docker - Build Docker
-#        run: |
-#          docker build --tag hectorgnux/final-lab-devsecops:latest .
-
-#      - name: Punto 5 - Image Security
-#        uses: aquasecurity/trivy-action@master
-#        with:
-#          image-ref: 'hectorgnux/final-lab-devsecops:latest'
-#          format: 'table'
-#          exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
+      - name: Punto 3 - Dependency Check
+        uses: dependency-check/Dependency-Check_Action@1.1.0
+        with:
+          project: 'final-lab-devsecops'
+          path: '.'
+          format: 'HTML' 
       
-#      - name: Push Docker
-#        run: | 
-#          docker push hectorgnux/final-lab-devsecops
+      - name: Punto 3 - Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
+
+      - name: Punto 4 - Construcción de la Imagen Docker - Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Punto 4 - Construcción de la Imagen Docker - Build Docker
+        run: |
+          docker build --tag hectorgnux/final-lab-devsecops:latest .
+
+      - name: Punto 5 - Image Security
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'hectorgnux/final-lab-devsecops:latest'
+          format: 'table'
+          exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
+      
+      - name: Push Docker
+        run: | 
+          docker push hectorgnux/final-lab-devsecops
 
   deploy:
     needs: build
@@ -68,17 +58,17 @@ jobs:
     
     steps:
 
-#    - name: Punto 6 - Pull de la Imagen Docker
-#      run: |
-#        docker pull hectorgnux/final-lab-devsecops
+    - name: Punto 6 - Pull de la Imagen Docker
+      run: |
+        docker pull hectorgnux/final-lab-devsecops
 
-#    - name: Punto 6 - Despliegue Aplicaion
-#      run: |
-#        docker run -p 8081:80 --name final-lab-devsecops -d hectorgnux/final-lab-devsecops:latest
+    - name: Punto 6 - Despliegue Aplicaion
+      run: |
+        docker run -p 8081:80 --name final-lab-devsecops -d hectorgnux/final-lab-devsecops:latest
 
-#    - name: Sleep
-#      run: | 
-#        sleep 10 
+    - name: Sleep
+      run: | 
+        sleep 10 
 
     - name: Punto 7 - OWASP ZAP Scan
 #      uses: zaproxy/action-baseline@v0.11.0
