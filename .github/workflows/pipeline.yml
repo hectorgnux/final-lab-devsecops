@@ -84,7 +84,6 @@ jobs:
       uses: zaproxy/action-baseline@v0.11.0
       with:
         #target: 'http://192.168.100.42:8081/'
-        target: 'http://192.168.100.42:8081/'
-        cmd_options: '-g'
+        target: 'http://192.168.100.42:8081'
 
           
