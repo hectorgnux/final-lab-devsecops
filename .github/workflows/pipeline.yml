@@ -3,7 +3,7 @@ name:  CI
 
 on:
   push:
-    branches: [ hoyarzo-sevsecops ]
+    branches: [ release-devsecops ]
   workflow_dispatch:
 
 jobs:
