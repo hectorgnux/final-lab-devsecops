@@ -70,7 +70,7 @@ jobs:
 
     - name: Sleep
       run: | 
-        sleep 10 
+        sleep 30 
 
 
     - name: Punto 7 - OWASP ZAP Scan
