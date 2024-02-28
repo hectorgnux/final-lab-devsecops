@@ -58,7 +58,7 @@ jobs:
 #    runs-on: self-hosted
     
 #    steps:
-#
+# jjj
 #    - name: Punto 6 - Pull de la Imagen Docker
 #      run: |
 #        docker pull hectorgnux/final-lab-devsecops
