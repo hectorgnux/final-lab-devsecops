@@ -20,6 +20,14 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Punto 3 - Node.JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Punto 3 - NPM
+        run: npm install
+
       - name: Punto 3 - Dependency Check
         uses: dependency-check/Dependency-Check_Action@1.1.0
         with:
