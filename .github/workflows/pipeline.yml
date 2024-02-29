@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-build2:
+  build2:
     runs-on:  ubuntu-latest
     steps:
       - name: Punto 3 - Node.JS
@@ -67,7 +67,7 @@ build2:
         run: | 
           docker push hectorgnux/final-lab-devsecops
 
-deploy:
+  deploy:
     needs: build
     runs-on: self-hosted
     
