@@ -67,7 +67,7 @@ build2:
         run: | 
           docker push hectorgnux/final-lab-devsecops
 
- deploy:
+deploy:
     needs: build
     runs-on: self-hosted
     
